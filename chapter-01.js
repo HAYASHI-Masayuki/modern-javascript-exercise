@@ -132,10 +132,24 @@ const questions = {
   },
 }
 
-const [, , ...args] = process.argv.map(arg => `question${arg}`)
+let args = [];
+
+try {
+  [, , ...args] = process.argv.map(arg => `question${arg}`)
+} catch (error) {
+  if (error.name !== 'ReferenceError') {
+    throw error
+  }
+}
 
 Object.entries(questions).filter(entry => !args.length || args.includes(entry[0])).forEach(entry => {
   console.log(`BEGIN ${entry[0]}`)
-  entry[1]()
+
+  try {
+    entry[1]()
+  } catch (error) {
+    console.error(error)
+  }
+
   console.log('END')
 })
