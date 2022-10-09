@@ -132,7 +132,7 @@ const questions = {
   },
 }
 
-let args = [];
+let args = []
 
 try {
   [, , ...args] = process.argv.map(arg => `question${arg}`)
