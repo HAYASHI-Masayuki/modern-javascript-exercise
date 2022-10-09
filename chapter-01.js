@@ -54,23 +54,25 @@ const questions = {
 
     [3.5, 2.5, 1.5, 0.5, -1.5, -2.5, -3.5].forEach(n => {
       console.log(`${n} % 2 =`, n % 2)
-    });
+    })
   },
 
   question4: () => {
     const addAngle = (n, o) => (n + o) % 360
 
-      console.log(`90 + 90 = `, addAngle(90, 90))
-      console.log(`180 + 180 = `, addAngle(180, 180))
-      console.log(`270 + 270 = `, addAngle(270, 270))
-      console.log(`360 + 360 = `, addAngle(360, 360))
-      console.log(`359 + 1 = `, addAngle(359, 1))
+    console.log('90 + 90 = ', addAngle(90, 90))
+    console.log('180 + 180 = ', addAngle(180, 180))
+    console.log('270 + 270 = ', addAngle(270, 270))
+    console.log('360 + 360 = ', addAngle(360, 360))
+    console.log('359 + 1 = ', addAngle(359, 1))
   },
 
   question5: () => {
     console.log('\\\\')
+    /* eslint-disable quotes */
     console.log("\\\\")
     console.log(`\\\\`)
+    /* eslint-enable quotes */
     console.log('\x5C\x5C')
   },
 
@@ -86,7 +88,7 @@ const questions = {
   },
 
   question7: () => {
-    const subpath = 'subpath';
+    const subpath = 'subpath'
 
     console.log(`/path/to${subpath ? `/${subpath}` : ''}`)
   },
@@ -135,5 +137,5 @@ const [, , ...args] = process.argv.map(arg => `question${arg}`)
 Object.entries(questions).filter(entry => !args.length || args.includes(entry[0])).forEach(entry => {
   console.log(`BEGIN ${entry[0]}`)
   entry[1]()
-  console.log(`END`)
+  console.log('END')
 })
