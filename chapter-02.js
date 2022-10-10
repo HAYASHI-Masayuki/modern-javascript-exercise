@@ -73,6 +73,116 @@ const questions = {
      * null, 0, ''を<=で比較する際は、すべて0に変換されて比較されるので？ true.
      */
   },
+
+  question5: () => {
+    console.log(`
+      a || bはa, bの型に関係なく常にa ? a : bと等価。
+      理由は、前者は「aが真の場合はa, 偽の場合はb」であり、後者も同等のため。
+      a && bは、a ? b : aと等価。
+    `)
+  },
+
+  question6: () => {
+    const a = Array(5).fill(0).map(_ => Math.floor(Math.random() * 100))
+    console.log(a)
+
+    let max1 = 0
+    for (let i = 0; i <= a.length; i++) {
+      if (a[i] > max1) {
+        max1 = a[i]
+      }
+    }
+    console.log(max1)
+
+    let max2 = 0
+    for (const j of a) {
+      if (j > max2) {
+        max2 = j
+      }
+    }
+    console.log(max2)
+
+    let max3 = 0
+    for (const k in a) {
+      if (a[k] > max3) {
+        max3 = a[k]
+      }
+    }
+    console.log(max3)
+  },
+
+  question7: () => {
+    // for~inにconstの追加と、変数名の(おそらく)typoの修正は本題と関係ないはず。
+    // なにも表示されないのは、iはインデックスというかプロパティ名で、
+    // これはまた文字列であるため、i + 1は01, 11, 21, ... 101, 111となるため。
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    for (const i in arr) { if (i + 1 === 10) console.log(arr[i]) }
+  },
+
+  question8: () => {
+    const zeroToNine = Array(10).fill(0).map((_, i) => i)
+
+    zeroToNine.forEach(i => {
+      switch (i) {
+        case 0:
+          console.log('zero')
+          break
+
+        case 1:
+          console.log('one')
+          break
+
+        case 2:
+          console.log('two')
+          break
+
+        case 3:
+          console.log('three')
+          break
+
+        case 4:
+          console.log('four')
+          break
+
+        case 5:
+          console.log('five')
+          break
+
+        case 6:
+          console.log('six')
+          break
+
+        case 7:
+          console.log('seven')
+          break
+
+        case 8:
+          console.log('eight')
+          break
+
+        case 9:
+          console.log('nine')
+          break
+      }
+    })
+
+    const iToS = [
+      'zero',
+      'one',
+      'two',
+      'three',
+      'four',
+      'five',
+      'six',
+      'seven',
+      'eight',
+      'nine',
+    ]
+
+    const zeroToNineString = zeroToNine.map(i => iToS[i])
+    console.log(zeroToNineString)
+    console.log(zeroToNineString.map(s => iToS.findIndex(v => v === s)))
+  },
 }
 
 let args = []
