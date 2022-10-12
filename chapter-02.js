@@ -183,6 +183,113 @@ const questions = {
     console.log(zeroToNineString)
     console.log(zeroToNineString.map(s => iToS.findIndex(v => v === s)))
   },
+
+  question9: () => {
+    const arr = Array(100).fill(0).map((_, i) => i)
+    const k = Math.floor(Math.random() * 100 - 7)
+    const n = Math.floor(Math.random() * 7 + 1)
+
+    switch (n) {
+      /* eslint-disable no-fallthrough, semi */
+      case 7: arr[k + 7 - 1] = 0;
+      case 6: arr[k + 6 - 1] = 0;
+      case 5: arr[k + 5 - 1] = 0;
+      case 4: arr[k + 4 - 1] = 0;
+      case 3: arr[k + 3 - 1] = 0;
+      case 2: arr[k + 2 - 1] = 0;
+      case 1: arr[k + 1 - 1] = 0;
+      default: arr[k] = 0;
+      /* eslint-enable no-fallthrough, semi */
+    }
+
+    console.log(k, n, arr)
+  },
+
+  question10: () => {
+    const s = ' abc def ghi'
+
+    // doなので、1文字目が空白でも、そこでは止まらない
+    let i = 0
+    do {
+      i++
+    } while (i < s.length && s[i] !== ' ')
+    console.log(i)
+
+    let j = 0
+    while (j < s.length && (s[j] !== ' ' || j === 0)) {
+      j++
+    }
+    console.log(j)
+  },
+
+  question11: () => {
+    let i, j
+
+    console.log('2.10.1-1')
+    i = 1
+    while (i <= 10) {
+      console.log(i)
+      i++
+    }
+
+    console.log('2.10.1-2')
+    const a = [1, 2, 3]
+    i = a.length - 1
+    while (i >= 0) {
+      console.log(a[i])
+      i--
+    }
+
+    console.log('2.10.1-3')
+    // eslint-disable-next-line no-sequences, no-unused-expressions
+    i = 0, j = a.length - 1
+    while (i < j) {
+      const temp = a[i]
+      a[i] = a[j]
+      a[j] = temp
+      // eslint-disable-next-line no-sequences, no-unused-expressions
+      i++, j--
+    }
+    console.log(a)
+
+    console.log('2.10.2-1')
+    // eslint-disable-next-line no-sparse-arrays
+    const arr = [, 2, , 4]
+    arr[9] = 100
+    i = 0
+    while (i < arr.length) {
+      console.log(arr[i])
+      i++
+    }
+
+    console.log('2.10.2-2')
+    const greeting = 'Hello 🌐'
+    i = 0
+    // XXX これだとUNICODEが分離されちゃう
+    // while (i < greeting.length) {
+    //   console.log(greeting[i])
+    //   i++
+    // }
+    // XXX for~ofは、Iterableを処理する。同様にスプレッド演算子もIterableを処理
+    // できるので、これで行ける。あるいはArray.fromでも行けるはず。
+    const greetingArray = [...greeting]
+    while (i < greetingArray.length) {
+      console.log(greetingArray[i])
+      i++
+    }
+    // あるいは、
+    const greetingIterator = greeting[Symbol.iterator]()
+    while (true) {
+      const { done, value } = greetingIterator.next()
+      if (done) {
+        break
+      }
+      console.log(value)
+    }
+
+    // TODO: 途中
+    console.log('2.10.3-')
+  },
 }
 
 let args = []
