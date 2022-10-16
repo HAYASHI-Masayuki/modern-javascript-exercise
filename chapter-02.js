@@ -287,8 +287,35 @@ const questions = {
       console.log(value)
     }
 
-    // TODO: 途中
-    console.log('2.10.3-')
+    console.log('2.10.3-1')
+    const obj = { name: 'Harry Smith', age: 42 }
+    const objEntries = [...Object.entries(obj)]
+    i = 0
+    while (i < objEntries.length) {
+      console.log(`${objEntries[i][0]}: ${objEntries[i][1]}`)
+      i++
+    }
+
+    console.log('2.10.3-2')
+    // eslint-disable-next-line no-sparse-arrays
+    const numbers = [1, 2, , 4]
+    numbers[99] = 100
+    let numbersEntries = Object.entries(numbers)
+    i = 0
+    while (i < numbersEntries.length) {
+      console.log(`${numbersEntries[i][0]}: ${numbersEntries[i][1]}`)
+      i++
+    }
+
+    numbers.lucky = true
+    console.log('2.10.3-3')
+    // TODO: Object.entriesは継承されたプロパティは見ないのでこれは不完全か。
+    numbersEntries = Object.entries(numbers)
+    i = 0
+    while (i < numbersEntries.length) {
+      console.log(`${numbersEntries[i][0]}: ${numbersEntries[i][1]}`)
+      i++
+    }
   },
 }
 
