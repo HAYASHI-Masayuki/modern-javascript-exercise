@@ -317,6 +317,93 @@ const questions = {
       i++
     }
   },
+
+  question12: () => {
+    const arr = [
+      [13, 2, 7, 9],
+      [5, 8, -1, -11],
+      [7, 25, 8, 13],
+    ]
+
+    let i, j
+    // eslint-disable-next-line no-labels
+    outer:
+    for (i = 0; i < arr.length; i++) {
+      for (j = 0; j < arr[i].length; j++) {
+        // eslint-disable-next-line no-labels
+        if (arr[i][j] < 0) break outer
+      }
+    }
+
+    console.log(i, j)
+  },
+
+  question13: () => {
+    const arr = [
+      [13, 2, 7, 9],
+      [5, 8, -1, -11],
+      [7, 25, 8, 13],
+    ]
+
+    let i = 0
+    let j = 0
+    let found = false
+
+    while (i < arr.length && !found) {
+      while (j < arr[i].length && !found) {
+        if (arr[i][j] < 0) {
+          found = true
+        } else {
+          j++
+        }
+      }
+
+      if (!found) {
+        i++
+        j = 0
+      }
+    }
+
+    console.log(i, j)
+  },
+
+  question14: () => {
+    const arr = [33, -4, 41, -39, -10, -38, 6, 45, 46, -33]
+    const arrPositive = arr.filter(n => n >= 0)
+
+    const count = arrPositive.length
+    const sum = arrPositive.reduce((p, c) => p + c)
+    const avg = count === 0 ? 0 : sum / count
+
+    console.log(arr, avg)
+  },
+
+  question15: () => {
+    const a = [0, 1, 0, 0, 9, 1, 1, 3, 1, 1]
+    const b = [3, 1, 1]
+    let i, j
+
+    // eslint-disable-next-line no-labels
+    outer:
+    for (i = 0; i < a.length - b.length; i++) {
+      if (a[i] !== b[0]) continue
+      for (j = 0; j < b.length; j++) {
+        // eslint-disable-next-line no-labels
+        if (a[i + j] !== b[j]) continue outer
+      }
+      break
+    }
+    console.log(i)
+
+    let found = false
+    for (i = 0; !found && i < a.length - b.length; i++) {
+      if (a.slice(i, i + b.length).toString() === b.toString()) found = true
+    }
+    // foundの場合、1つ先に進んでいるのでその分引く
+    console.log(i - found)
+
+    console.log(`${a}`.substr(0, `,${a},`.indexOf(`,${b},`)).match(/,/g).length)
+  },
 }
 
 let args = []
